@@ -53,6 +53,22 @@ async function trackUserHandler() {
 
 button.addEventListener('click', trackUserHandler);
 
+Promise.race([getPosition(), setTimer(1000)]) // race of 2 promises
+  .then((data) => {
+    console.log(data)
+  });
+
+Promise.all([getPosition(), setTimer(1000)]) // have to wait all promices
+  .then (proniseData => {
+    console.log(proniseData)
+  });
+
+  Promise.allSettled([getPosition(), setTimer(1000)])
+  .then (proniseData => {
+    console.log(proniseData)
+  });
+
+
 // let result = 0;
 
 // for (let i = 0; i < 100000000; i++) {
